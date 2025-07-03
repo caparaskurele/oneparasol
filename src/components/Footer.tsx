@@ -24,14 +24,14 @@ export function Footer() {
                   height="32"
                   className="w-8"
                 />
-                <span>Nextly</span>
+                <span>One Parasol</span>
               </Link>
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              Nextly is a free landing page & marketing website template for
-              startups and indie projects. Its built with Next.js & TailwindCSS.
-              And its completely open-source.
+              One Parasol is a website for Finance, Law and Taxation where blogs
+              regarding these shall be published regularly apart from the
+              relevant services.
             </div>
 
             <div className="mt-5">
