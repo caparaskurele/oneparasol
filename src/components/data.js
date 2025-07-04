@@ -11,23 +11,23 @@ import benefitOneImg from "../../public/img/benefit-one.png";
 import benefitTwoImg from "../../public/img/benefit-two.png";
 
 const benefitOne = {
-  title: "Highlight your benefits",
-  desc: "You can use this space to highlight your first benefit or a feature of your product. It can also contain an image or Illustration like in the example along with some bullet points.",
+  title: "Benefits",
+  desc: "Explore simplified insights and expert services across Finance, Law, and Taxation — all in one place.",
   image: benefitOneImg,
   bullets: [
     {
-      title: "Understand your customers",
-      desc: "Then explain the first point breifly in one or two lines.",
+      title: "Trusted Knowledge Hub",
+      desc: "Stay informed with expert-written blogs on Finance, Law, and Taxation—simplified for everyday understanding.",
       icon: <FaceSmileIcon />,
     },
     {
-      title: "Improve acquisition",
-      desc: "Here you can add the next benefit point.",
+      title: "Professionally Curated Insights",
+      desc: "Stay informed with content curated by domain specialists, helping you make smarter financial and legal decisions.",
       icon: <ChartBarSquareIcon />,
     },
     {
-      title: "Drive customer retention",
-      desc: "This will be your last bullet point in this section.",
+      title: "All-in-One Services",
+      desc: "Access professional services under one roof, from legal compliance to financial planning and tax filing.",
       icon: <CursorArrowRaysIcon />,
     },
   ],

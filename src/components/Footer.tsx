@@ -29,13 +29,10 @@ export function Footer() {
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              One Parasol is a website for Finance, Law and Taxation where blogs
-              regarding these shall be published regularly apart from the
-              relevant services.
-            </div>
+              </div>
 
             <div className="mt-5">
-              <a
+              {/*<a
                 href="https://vercel.com/?utm_source=web3templates&utm_campaign=oss"
                 target="_blank"
                 rel="noopener"
@@ -47,7 +44,7 @@ export function Footer() {
                   width="212"
                   height="44"
                 />
-              </a>
+              </a>*/}
             </div>
           </div>
 
