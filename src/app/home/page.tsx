@@ -33,6 +33,14 @@ export default function Home() {
           </div>
         ))}
       </div>
+      {/* Example: Add a Startup button below if needed */}
+      {/* 
+      <button
+        className="mt-8 bg-green-600 text-white px-8 py-4 rounded font-semibold text-lg hover:bg-green-700 transition"
+      >
+        Startup
+      </button>
+      */}
     </div>
   );
 }
