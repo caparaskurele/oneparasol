@@ -75,6 +75,7 @@ export default function Home() {
             <option>ITR Filing</option>
             <option>Tax Audit</option>
             <option>FP&A Domain</option>
+            <option>Data Scientist</option>
             <option>NRI Services</option>
             <option>Company/Firm Incorporation</option>
             <option>Import/Export</option>
