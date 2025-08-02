@@ -1,145 +1,102 @@
 "use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import ThemeChanger from "./DarkSwitch";
-import Image from "next/image"
 import { Disclosure } from "@headlessui/react";
+import clsx from "clsx";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/blogs", label: "Blogs" },
+  { href: "/knowledge_hub", label: "Knowledge Hub" },
+  { href: "/curated_insights", label: "Curated Insights" },
+  { href: "/offerings", label: "Offerings" },
+  { href: "/useful_links", label: "Useful Links" },
+];
 
 export const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div className="w-full">
-      <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-1">
-        {/* Logo  */}
-        <Link href="/">
-          <span className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
-              <span>
-                <Image
-                  src="/img/logo.svg"
-                  width="32"
-                  alt="N"
-                  height="32"
-                  className="w-8"
-                />
+    <Disclosure
+      as="nav"
+      className={clsx(
+        "fixed w-full top-0 z-50 transition-shadow duration-300",
+        scrolled ? "shadow-md bg-white/80 dark:bg-gray-900/80 backdrop-blur" : "bg-white dark:bg-gray-900"
+      )}
+    >
+      {({ open }) => (
+        <>
+          <div className="container mx-auto flex items-center justify-between px-4 py-4">
+            <Link href="/">
+              <span className="flex items-center space-x-2 text-xl font-medium text-indigo-500 dark:text-gray-100">
+                <Image src="/img/logo.png" alt="One Parasol" width={32} height={32} className="w-8 h-8" />
+                <span>One Parasol</span>
               </span>
-            <span>One Parasol</span>
-          </span>
-        </Link>
-
-        {/* get started  */}
-        <div className="gap-3 nav__item mr-2 lg:flex ml-auto lg:ml-0 lg:order-2">
-            <ThemeChanger />
-            <div className="hidden mr-3 lg:flex nav__item">
-              <Link href="/" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
-                Get Started
-              </Link>
+            </Link>
+            <div className="hidden xl:flex items-center space-x-5">
+              {navLinks.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-lg font-normal text-gray-800 no-underline dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800 px-2 py-1 rounded-md transition"
+                >
+                  {label}
+                </Link>
+              ))}
+              <ThemeChanger />
             </div>
-        </div>
-                
-        <Disclosure>
-          {({ open }) => (
-            <>
-                <Disclosure.Button
-                  aria-label="Toggle Menu"
-                  className="px-2 py-1 text-gray-500 rounded-md lg:hidden hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700">
-                  <svg
-                    className="w-6 h-6 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24">
-                    {open && (
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                      />
-                    )}
-                    {!open && (
-                      <path
-                        fillRule="evenodd"
-                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                      />
-                    )}
-                  </svg>
-                </Disclosure.Button>
-
-                <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
-                  <>
-                    <Link
-                      href="/blogs"
-                      className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none"
-                    >
-                      Blogs
-                    </Link>
-                    <Link href="/" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5">         
-                        Get Started
-                    </Link>
-                  </>
-                </Disclosure.Panel>
-            </>
-          )}
-        </Disclosure>
-        
-        {/* menu  */}
-        <div className="hidden text-center lg:flex lg:items-center">
-          <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
-            <li className="mr-3 nav__item">
-              <Link
-                href="/"
-                className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
-              >
-                Home
-              </Link>
-            </li>
-             <li className="mr-3 nav__item">
-              <Link
-                href="/about"
-                className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
-              >
-                About
-              </Link>
-            </li>
-             <li className="mr-3 nav__item">
-              <Link
-                href="/blogs"
-                className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
-              >
-                Blogs
-              </Link>
-            </li>
-             <li className="mr-3 nav__item">
-              <Link
-                href="/knowledge_hub"
-                className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
-              >
-                Knowledge Hub
-              </Link>
-            </li>
-             <li className="mr-3 nav__item">
-              <Link
-                href="/curated_insights"
-                className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
-              >
-                Curated Insights
-              </Link>
-            </li>
-             <li className="mr-3 nav__item">
-              <Link
-                href="/offerings"
-                className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
-              >
-                Offerings
-              </Link>
-            </li>
-             <li className="mr-3 nav__item">
-              <Link
-                href="/useful_links"
-                className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
-              >
-                Useful Links
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-      </nav>
-    </div>
+            <div className="flex items-center gap-3 ml-2 xl:hidden">
+              <Disclosure.Button className="p-2 rounded-md text-gray-500 hover:text-indigo-600 focus:outline-none dark:text-gray-300">
+                <svg
+                  className="w-6 h-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  {open ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </Disclosure.Button>
+              <ThemeChanger />
+            </div>
+          </div>
+          <Disclosure.Panel
+            static
+            className={clsx(
+              "xl:hidden overflow-hidden transition-all duration-300 ease-in-out",
+              open ? "max-h-[500px] opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-4"
+            )}
+          >
+            <div className=" container mx-auto px-4 py-4">
+              <div className="flex flex-col space-y-3">
+                {navLinks.map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="block text-base font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 rounded-md px-2 py-2"
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
   );
-}
+};
