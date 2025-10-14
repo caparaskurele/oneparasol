@@ -22,15 +22,11 @@ export default function About() {
         <br />
         <br />
         At One Parasol, we believe that everyone deserves access to expert advice
-        to help them achieve their goals and navigate life's challenges with
+        to help them achieve their goals and navigate life&apos;s challenges with
         confidence.
         <br />
         <br />
-        Join us on our journey to simplify your life and empower your decisions
-        with trusted expertise under one roof.
-        <br />
-        <br />
-        <strong>Your One Stop Solution for Finance, Legal, and Tax Needs!</strong>
+        
       </p>
 
       <p className="mt-6 text-lg text-gray-800 dark:text-gray-200">
