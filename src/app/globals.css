@@ -12,20 +12,36 @@
 }
 
 :root {
-  /* 0.8 = 80% of 16px = 12.8px base - rem-based Tailwind sizes will scale down */
-  --global-font-scale: 80%;
+  /* 0.9 = 90% of 16px = 14.4px base - rem-based Tailwind sizes will scale down */
+  --global-font-scale: 90%;
 }
 
-/* Reduce root font size so rem-based Tailwind sizes render smaller */
+/* Reduce root font size so rem-based Tailwind sizes render slightly smaller */
 html {
   font-size: var(--global-font-scale);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Restore default root font-size so images and layout render normally */
+html {
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure images are visible and responsive */
+img,
+.responsive-img,
+.site-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 /* Main site container to keep content from stretching too wide */
 .site-container {
-  max-width: 1200px; /* tweak as needed */
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
