@@ -21,8 +21,8 @@ export default function SoulAndStories() {
             <article>
               <h2 className="text-xl font-semibold mb-2">Travel &amp; Food</h2>
               <p className="text-gray-700">
-                Knowledge isn’t just numbers and strategy – it&apos;s also culture and flavor. This section offers travelogues, hidden gem reviews,
-                street food discoveries, and curated guides. It's about exploring the world with curiosity, whether you&apos;re backpacking solo or indulging
+                Knowledge isn&apos;t just numbers and strategy – it&apos;s also culture and flavor. This section offers travelogues, hidden gem reviews,
+                street food discoveries, and curated guides. It&apos;s about exploring the world with curiosity, whether you&apos;re backpacking solo or indulging
                 in culinary heritage with family.
               </p>
             </article>
@@ -30,7 +30,7 @@ export default function SoulAndStories() {
             <article>
               <h2 className="text-xl font-semibold mb-2">Poetry World</h2>
               <p className="text-gray-700">
-                A celebration of verse and voice. Words have the power to heal, inspire, and express the unspoken. In this creative haven, you'll find famous
+                A celebration of verse and voice. Words have the power to heal, inspire, and express the unspoken. In this creative haven, you&apos;ll find famous
                 and moving poetry across genres – motivational, nature-inspired, awakening, romantic, philosophical and more.
               </p>
             </article>

@@ -1,5 +1,6 @@
 import blogs from "@/data/blogs.json"
 import Image from "next/image"
+import React from "react"
 
 type Props = {
   params: {
@@ -7,13 +8,13 @@ type Props = {
   }
 }
 
-export default function BlogDetailPage({ params }: Props) {
+export default function BlogPostPage({ params }: Props) {
   const blog = blogs.find((b) => b.id === params.blogId)
 
   if (!blog) return <p className="text-center mt-10">Blog not found.</p>
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-10">
+    <main>
       <img
         src={blog.coverImage}
         alt={blog.title}
@@ -27,6 +28,6 @@ export default function BlogDetailPage({ params }: Props) {
         className="prose prose-lg"
         dangerouslySetInnerHTML={{ __html: blog.content.replace(/\n/g, "<br />") }}
       />
-    </div>
+    </main>
   )
 }
