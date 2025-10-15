@@ -1,4 +1,5 @@
 import blogs from "@/data/blogs.json"
+import Image from "next/image"
 
 type Props = {
   params: {

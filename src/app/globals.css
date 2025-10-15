@@ -11,3 +11,45 @@
   }
 }
 
+:root {
+  /* 0.8 = 80% of 16px = 12.8px base - rem-based Tailwind sizes will scale down */
+  --global-font-scale: 80%;
+}
+
+/* Reduce root font size so rem-based Tailwind sizes render smaller */
+html {
+  font-size: var(--global-font-scale);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main site container to keep content from stretching too wide */
+.site-container {
+  max-width: 1200px; /* tweak as needed */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Make images responsive and constrained */
+img,
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Keep certain fixed/floating UI unscaled (use .no-scale on those elements) */
+.no-scale {
+  transform: none !important;
+  zoom: 1 !important;
+}
+
+/* Mobile: do NOT scale down on very small screens (preserve readability) */
+@media (max-width: 640px) {
+  html {
+    font-size: 100%;
+  }
+}
+

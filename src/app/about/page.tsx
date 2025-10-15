@@ -7,22 +7,21 @@ export default function About() {
         About One Parasol
       </h1>
       <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300">
-        One Parasol is a platform that helps individuals and businesses simplify
-        their finance, legal, and tax complexities by connecting them with
-        top-rated professionals.
+        One Parasol is a platform that helps individuals and businesses address
+        their finance, legal, and tax complexities.
         <br />
         <br />
-        Our mission is to make expert guidance easily accessible whether you need
-        personal finance advice, business consulting, legal assistance, or tax
-        planning.
+        Our mission is to make expert-level guidance easily accessible from
+        personal finance, setting up of a new business, business consulting for expanding existing business, 
+        legal assistance, to tax planning.
         <br />
         <br />
-        We carefully vet and select professionals to ensure you receive the
-        highest quality service tailored to your unique needs.
+        We have a strong team of professionals to ensure you receive the
+        highest quality service tailored to your specific needs.
         <br />
         <br />
         At One Parasol, we believe that everyone deserves access to expert advice
-        to help them achieve their goals and navigate life&apos;s challenges with
+        to help them achieve their goals and deal all the challenges with
         confidence.
         <br />
         <br />
@@ -30,12 +29,12 @@ export default function About() {
       </p>
 
       <p className="mt-6 text-lg text-gray-800 dark:text-gray-200">
-        Visit our{" "}
+        Click here to visit our{" "}
         <Link
           href="/offerings"
-          className="text-indigo-5000 dark:text-indigo-400 hover:underline"
+          className="text-indigo-600 dark:text-indigo-400 font-bold underline hover:opacity-90"
         >
-          Offerings
+          Offerings page
         </Link>
       </p>
     </div>

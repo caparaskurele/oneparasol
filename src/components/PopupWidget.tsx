@@ -1,31 +1,17 @@
 "use client";
 
 import React from "react";
-import { Analytics } from "@vercel/analytics/react";
 
 export function PopupWidget(): JSX.Element {
-  // Minimal placeholder widget. Replace with your real implementation.
   return (
-    <div aria-hidden style={{ position: "fixed", right: 16, bottom: 16, zIndex: 9999 }}>
+    <div className="no-scale fixed right-4 bottom-4 z-50">
       <button
         type="button"
-        style={{
-          background: "#0ea5a4",
-          color: "#fff",
-          border: "none",
-          padding: "10px 14px",
-          borderRadius: 8,
-          boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
-          cursor: "pointer",
-        }}
-        onClick={() => {
-          // placeholder action
-          alert("Popup widget placeholder");
-        }}
+        className="bg-teal-500 text-white px-4 py-2 rounded-lg shadow-lg"
+        onClick={() => alert("Help")}
       >
         Help
       </button>
-      <Analytics />
     </div>
   );
 }
