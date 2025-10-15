@@ -1,12 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "images.unsplash.com",
-      "plus.unsplash.com",
-      "243225049.fs1.hubspotusercontent-na2.net",
-      "images.pexels.com",
-      // add any other external hostnames you use
+    remotePatterns: [
+      // Example: allow images from example-cdn.com
+      // { protocol: "https", hostname: "example-cdn.com", pathname: "/**" },
     ],
   },
 };

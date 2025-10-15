@@ -7,7 +7,6 @@ export default function SoulAndStories() {
       <Link href="/knowledge_hub" className="text-sm text-indigo-600 hover:underline">← Back to Knowledge Hub</Link>
 
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        {/* Left: full content */}
         <div>
           <h1 className="text-3xl font-bold mb-4">Soul &amp; Stories</h1>
 
@@ -61,8 +60,7 @@ export default function SoulAndStories() {
           </section>
         </div>
 
-        {/* Right: image */}
-        <aside className="w-full">
+        <aside>
           <div className="rounded-lg overflow-hidden shadow">
             <Image
               src="/img/soul-and-stories.png"
