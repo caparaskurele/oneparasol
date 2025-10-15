@@ -9,7 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="light">
       <Navbar />
       {children}
       <Analytics />

@@ -12,9 +12,9 @@ import { benefitOne, benefitTwo } from "@/components/data";
 
 export default function Home() {
   return (
-    <main className="site-container py-16">
+    <main className="max-w-7xl mx-auto px-6 py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        {/* Left column: text */}
+        {/* Left: text */}
         <div className="space-y-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 dark:text-white">
             One place for knowledge and services
@@ -40,11 +40,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right column: responsive optimized image */}
+        {/* Right: hero image from public/img/hero.png */}
         <div className="w-full flex justify-center md:justify-end">
           <div className="w-full max-w-md md:max-w-lg">
             <Image
-              src="/img/hero.jpg" // place your hero image in public/img/hero.jpg
+              src="/img/hero.png"
               alt="One Parasol hero"
               width={900}
               height={900}

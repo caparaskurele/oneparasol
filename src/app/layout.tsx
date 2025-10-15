@@ -8,7 +8,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "One Parasol",
   description: "One Parasol — Investment, finance, legal & taxation guidance",
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: "/img/logo.png",       // uses the image in public/img/logo.png
+    apple: "/img/logo.png",      // apple touch icon
+  },
 };
 
 export default function RootLayout({
