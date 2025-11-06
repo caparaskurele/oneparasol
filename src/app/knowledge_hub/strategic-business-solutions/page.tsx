@@ -62,23 +62,6 @@ export default function StrategicBusinessSolutions() {
               </Link>
             ))}
           </section>
-
-          {/* Clickable list of sub-topics */}
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-3">Quick links</h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-700">
-              {SUBPAGES.map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    href={`/knowledge_hub/strategic-business-solutions/${s.slug}`}
-                    className="text-indigo-700 hover:underline"
-                  >
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         {/* Right: image / visual */}
