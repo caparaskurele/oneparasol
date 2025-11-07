@@ -1,69 +1,45 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+
+const SUBPAGES = [
+  { slug: "fp-a", title: "FP&A", desc: "Financial planning & analysis frameworks and career guide." },
+  { slug: "data-scientist", title: "Data Scientist", desc: "Data science career paths, tools and project playbooks." },
+  { slug: "career-growth", title: "Career Growth", desc: "Career frameworks, promotion playbooks and growth rhythms." },
+  { slug: "human-skills", title: "Human Skills", desc: "Communication, leadership and teaming skills for professionals." },
+  { slug: "learning-lab", title: "Learning Lab", desc: "Micro-courses, learning routes and upskilling tactics." },
+];
 
 export default function CareerGrowthGrid() {
   return (
     <main className="max-w-6xl mx-auto px-6 py-12">
-      <Link href="/knowledge_hub" className="text-sm text-indigo-600 hover:underline">← Back to Knowledge Hub</Link>
+      <nav className="mb-4">
+        <Link href="/knowledge_hub" className="text-sm text-indigo-600 hover:underline">
+          ← Back to Knowledge Hub
+        </Link>
+      </nav>
 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        {/* Left: full content */}
-        <div>
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="md:col-span-2">
           <h1 className="text-3xl font-bold mb-4">Career Growth Grid</h1>
-
-          <p className="mb-4 text-gray-700">
-            Advance your career with skills, insights, and strategic direction. Navigate your professional journey with clarity,
-            purpose, and confidence. Career Growth Grid offers practical insights, strategic tools, and future-ready skills to help
-            you grow, adapt, and thrive in today’s evolving workplace.
+          <p className="mb-6 text-gray-700">
+            Practical guides and playbooks to accelerate careers in finance, data and more. Choose a sub-section to explore short
+            articles, frameworks and tools tailored for working professionals.
           </p>
 
-          <section className="space-y-4">
-            <article>
-              <h2 className="text-xl font-semibold mb-2">FP&A</h2>
-              <p className="text-gray-700">
-                Master the nuances of Financial Planning & Analysis. This area is where finance meets forecasting. FP&A professionals
-                and learners can delve into budgeting models, scenario analysis, performance dashboards, variance reports, and more. Case
-                studies and Excel templates are frequently shared to help users understand how to build data-driven financial strategies.
-              </p>
-            </article>
-
-            <article>
-              <h2 className="text-xl font-semibold mb-2">Data Scientist</h2>
-              <p className="text-gray-700">
-                Dive into the world of data analytics, AI, and machine learning. From beginners to advanced coders, this section provides practical
-                walkthroughs for data modeling, Python scripts, machine learning, and dashboarding with tools like Power BI and Tableau.
-              </p>
-            </article>
-
-            <article>
-              <h2 className="text-xl font-semibold mb-2">Career Growth</h2>
-              <p className="text-gray-700">
-                This section dives into smart strategies to elevate your professional journey - whether you&apos;re aiming for a promotion,
-                considering a lateral move, or stepping into leadership. Discover how to build your personal brand, seek the right mentors,
-                craft compelling resumes, and navigate transitions with confidence.
-              </p>
-            </article>
-
-            <article>
-              <h2 className="text-xl font-semibold mb-2">Human Skills</h2>
-              <p className="text-gray-700">
-                In a world driven by technology, it&apos;s human connection that sets professionals apart. Learn to communicate with impact,
-                lead with empathy, master emotional intelligence, and collaborate effectively across teams and cultures.
-              </p>
-            </article>
-
-            <article>
-              <h2 className="text-xl font-semibold mb-2">Learning Lab</h2>
-              <p className="text-gray-700">
-                Welcome to your lifelong learning zone. Learning Lab is where curiosity meets career development through practical resources
-                and inspiration. Explore book reviews, deep dives into cognitive science, top online course picks, and productivity hacks
-                to sharpen your mind and skills.
-              </p>
-            </article>
+          <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {SUBPAGES.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/knowledge_hub/career-growth-grid/${s.slug}`}
+                className="group block border rounded-lg p-4 hover:shadow-lg transition-shadow bg-white"
+              >
+                <h3 className="text-lg font-semibold text-indigo-700 group-hover:underline">{s.title}</h3>
+                <p className="mt-2 text-sm text-gray-600">{s.desc}</p>
+              </Link>
+            ))}
           </section>
         </div>
 
-        {/* Right: image */}
         <aside className="w-full">
           <div className="rounded-lg overflow-hidden shadow">
             <Image
@@ -74,6 +50,18 @@ export default function CareerGrowthGrid() {
               className="w-full h-auto object-cover"
               priority
             />
+          </div>
+
+          {/* Clickable sub-section links below the photo */}
+          <div className="mt-6">
+            <h3 className="text-sm font-medium text-gray-600 mb-2">Sub-sections</h3>
+            <div className="flex flex-col gap-2">
+              {SUBPAGES.map((s) => (
+                <Link key={s.slug} href={`/knowledge_hub/career-growth-grid/${s.slug}`} className="text-sm text-indigo-600 hover:underline">
+                  {s.title}
+                </Link>
+              ))}
+            </div>
           </div>
         </aside>
       </div>
