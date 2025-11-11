@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const KNOWLEDGE_SECTIONS = [
-  // <-- NEW section first (highest priority)
+  // keep your current first section as needed, e.g., Smart Money (if you have it)
   {
     title: "Smart Money, Modern Lifestyle",
     base: "/knowledge_hub/smart-money-modern-lifestyle",
@@ -17,6 +17,20 @@ const KNOWLEDGE_SECTIONS = [
     ],
   },
 
+  // <-- NEW section inserted second
+  {
+    title: "Government Benefits & Public Schemes",
+    base: "/knowledge_hub/government-benefits-public-schemes",
+    subs: [
+      { slug: "central-government-schemes", title: "Central Government Schemes" },
+      { slug: "state-government-schemes", title: "State Government Schemes" },
+      { slug: "tax-rebates-incentives", title: "Tax Rebates & Incentives" },
+      { slug: "social-security-benefits", title: "Social Security Benefits" },
+      { slug: "application-guides-eligibility", title: "Application Guides & Eligibility" },
+    ],
+  },
+
+  // remainder of your sections (example)
   {
     title: "Strategic Business Solutions",
     base: "/knowledge_hub/strategic-business-solutions",
@@ -28,7 +42,6 @@ const KNOWLEDGE_SECTIONS = [
       { slug: "business-strategies", title: "Business Strategies" },
     ],
   },
-
   {
     title: "Money, Markets & Mandates",
     base: "/knowledge_hub/money-markets-mandates",
@@ -40,7 +53,6 @@ const KNOWLEDGE_SECTIONS = [
       { slug: "legal-awareness", title: "Legal Awareness" },
     ],
   },
-
   {
     title: "Career Growth Grid",
     base: "/knowledge_hub/career-growth-grid",
@@ -52,7 +64,6 @@ const KNOWLEDGE_SECTIONS = [
       { slug: "learning-lab", title: "Learning Lab" },
     ],
   },
-
   {
     title: "Soul & Stories",
     base: "/knowledge_hub/soul-and-stories",
@@ -70,16 +81,11 @@ export default function KnowledgeHubDropdown(): JSX.Element {
   const router = useRouter();
 
   function navigate(href: string) {
-    // use router.push on mouseDown to avoid hover-close race conditions
     router.push(href);
   }
 
   return (
-    <div
-      className="w-96 bg-white rounded shadow-md p-4"
-      style={{ zIndex: 9999, pointerEvents: "auto" }}
-      role="menu"
-    >
+    <div className="w-96 bg-white rounded shadow-md p-4" style={{ zIndex: 9999, pointerEvents: "auto" }} role="menu">
       {KNOWLEDGE_SECTIONS.map((section) => (
         <div key={section.title} className="mb-4">
           <h4 className="font-semibold text-sm">{section.title}</h4>
@@ -101,12 +107,9 @@ export default function KnowledgeHubDropdown(): JSX.Element {
                   >
                     {sub.title}
                   </button>
-
-                  {/* Semantic fallback for crawlers / accessibility */}
                   <span style={{ display: "none" }}>
                     <Link href={href}>{sub.title}</Link>
                   </span>
-
                   {idx < section.subs.length - 1 && (
                     <span className="mx-2 text-gray-400" aria-hidden>
                       •
