@@ -48,6 +48,17 @@ const KNOWLEDGE_SECTIONS = [
       { slug: "tales-unbound", title: "Tales Unbound" },
     ],
   },
+  {
+    title: "Smart Money, Modern Lifestyle",
+    base: "/knowledge_hub/smart-money-modern-lifestyle",
+    subs: [
+      { slug: "budgeting-money-hacks", title: "Budgeting & Money Hacks" },
+      { slug: "money-mindset-mental-wellness", title: "Money Mindset & Mental Wellness" },
+      { slug: "ai-fintech-tools", title: "AI & Fintech Tools" },
+      { slug: "automated-trading", title: "Automated Trading" },
+      { slug: "remote-work-geo-arbitrage", title: "Remote Work & Geo-Arbitrage" },
+    ],
+  },
 ];
 
 export default function KnowledgeHubDropdown() {
