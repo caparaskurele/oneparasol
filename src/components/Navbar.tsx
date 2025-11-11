@@ -13,7 +13,7 @@ export function Navbar(): JSX.Element {
       items: ["Mergers & Acquisitions", "Business Valuation", "Startup Sparks", "Global Growth & Exports", "Business Strategies"],
     },
     {
-      title: "Money, Markets & Mandates",
+      title: "Investments, NRIs & Legal",
       slug: "/knowledge_hub/money-markets-mandates",
       items: ["Value Investing", "Real Estate Playbook", "Cross-Border Wealth & NRIs", "Alternative Investments", "Legal Awareness"],
     },
@@ -79,3 +79,4 @@ export function Navbar(): JSX.Element {
     </header>
   );
 }
+

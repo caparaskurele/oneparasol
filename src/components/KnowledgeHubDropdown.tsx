@@ -43,8 +43,8 @@ const KNOWLEDGE_SECTIONS = [
     ],
   },
   {
-    title: "Money, Markets & Mandates",
-    base: "/knowledge_hub/money-markets-mandates",
+    title: "Investments, NRIs & Legal",
+    base: "/knowledge_hub/investments-nris-legal",
     subs: [
       { slug: "value-investing", title: "Value Investing" },
       { slug: "real-estate-playbook", title: "Real Estate Playbook" },

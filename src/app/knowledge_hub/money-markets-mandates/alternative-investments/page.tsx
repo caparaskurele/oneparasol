@@ -44,7 +44,7 @@ export default function MoneyMarketsMandates() {
           <div className="rounded-lg overflow-hidden shadow">
             <Image
               src="/img/money-markets-mandates.png"
-              alt="Money, Markets & Mandates"
+              alt="Investments, NRIs & Legal"
               width={1200}
               height={900}
               className="w-full h-auto object-cover"

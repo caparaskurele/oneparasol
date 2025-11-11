@@ -9,7 +9,7 @@ const SUBPAGES = [
   { slug: "legal-awareness", title: "Legal Awareness", desc: "Key legal fundamentals for investors and wealth managers." },
 ];
 
-export default function MoneyMarketsMandates() {
+export default function MoneyMarketsLanding() {
   return (
     <main className="max-w-6xl mx-auto px-6 py-12">
       <nav className="mb-4">
@@ -18,9 +18,10 @@ export default function MoneyMarketsMandates() {
         </Link>
       </nav>
 
+      <h1 className="text-3xl font-bold mb-6">Investments, NRIs & Legal</h1>
+
       <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         <div className="md:col-span-2">
-          <h1 className="text-3xl font-bold mb-4">Money, Markets &amp; Mandates</h1>
           <p className="mb-6 text-gray-700">
             Deep, practical guides on investing, wealth management and the legal/operational mandates that matter.
             Select a sub-section to explore articles and practical playbooks.
@@ -44,7 +45,7 @@ export default function MoneyMarketsMandates() {
           <div className="rounded-lg overflow-hidden shadow">
             <Image
               src="/img/money-markets-mandates.png"
-              alt="Money, Markets & Mandates"
+              alt="Investments, NRIs & Legal"
               width={1200}
               height={900}
               className="w-full h-auto object-cover"

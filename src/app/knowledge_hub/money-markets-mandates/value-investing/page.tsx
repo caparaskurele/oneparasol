@@ -26,7 +26,7 @@ export default async function ValueInvestingIndex() {
     <main className="max-w-6xl mx-auto px-6 py-12">
       <nav className="mb-4">
         <Link href="/knowledge_hub/money-markets-mandates" className="text-sm text-indigo-600 hover:underline">
-          ← Back to Money, Markets & Mandates
+          ← Back to Investments, NRIs & Legal
         </Link>
       </nav>
 

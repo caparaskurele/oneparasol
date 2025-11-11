@@ -25,7 +25,7 @@ const HUB = [
   },
   {
     main: "money-markets-mandates",
-    title: "Money, Markets & Mandates",
+    title: "Investments, NRIs & Legal",
     subs: [
       { slug: "value-investing", title: "Value Investing" },
       { slug: "real-estate-playbook", title: "Real Estate Playbook" },
