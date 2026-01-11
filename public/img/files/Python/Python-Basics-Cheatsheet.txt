@@ -1,0 +1,41 @@
+# Python Basics Cheatsheet
+
+## Variables & Data Types
+- Variables: x = 10, name = "Alice"
+- Strings: "text", 'text', """multi-line"""
+- Numbers: int, float, complex
+- Collections: lists, tuples, dicts, sets
+
+## Control Flow
+- if, elif, else
+- for loops: for x in range(10)
+- while loops: while x > 0
+- break, continue, pass
+
+## Functions
+def function_name(parameters):
+    """Docstring"""
+    return result
+
+## Common Methods
+- str.upper(), str.lower(), str.split()
+- list.append(), list.extend(), list.pop()
+- dict.keys(), dict.values(), dict.items()
+
+## Error Handling
+try:
+    # code
+except Exception as e:
+    # handle error
+finally:
+    # cleanup
+
+## File Operations
+with open('file.txt', 'r') as f:
+    data = f.read()
+
+## Useful Libraries
+- math: mathematical functions
+- random: random number generation
+- datetime: date and time
+- os: operating system operations

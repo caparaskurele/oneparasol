@@ -66,6 +66,47 @@ async function getArticlesForCategory(categoryId: string): Promise<Article[]> {
   });
 }
 
+interface DownloadFile {
+  name: string;
+  size: string;
+  url: string;
+  extension: string;
+}
+
+async function getDownloadFiles(): Promise<DownloadFile[]> {
+  const filesDir = path.join(process.cwd(), "public", "img", "files", "Python");
+
+  if (!fs.existsSync(filesDir)) {
+    return [];
+  }
+
+  const fileList = fs.readdirSync(filesDir);
+  
+  return fileList
+    .filter((file) => {
+      const stat = fs.statSync(path.join(filesDir, file));
+      return stat.isFile();
+    })
+    .map((file) => {
+      const filePath = path.join(filesDir, file);
+      const stat = fs.statSync(filePath);
+      const sizeInKB = stat.size / 1024;
+      const sizeString = sizeInKB > 1024 
+        ? `${(sizeInKB / 1024).toFixed(2)} MB`
+        : `${sizeInKB.toFixed(2)} KB`;
+      
+      const extension = path.extname(file).substring(1).toUpperCase() || "FILE";
+
+      return {
+        name: file,
+        size: sizeString,
+        url: `/img/files/Python/${file}`,
+        extension,
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
 export default async function PythonPage() {
   const pythonDir = path.join(
     process.cwd(),
@@ -88,11 +129,26 @@ export default async function PythonPage() {
     }))
   );
 
+  const downloadFiles = await getDownloadFiles();
+
   const resourceIcons: { [key: string]: string } = {
     pdf: "📄",
     colab: "🔬",
     video: "🎥",
     article: "📚",
+  };
+
+  const fileIcons: { [key: string]: string } = {
+    PDF: "📄",
+    DOCX: "📝",
+    XLSX: "📊",
+    CSV: "📋",
+    ZIP: "📦",
+    TXT: "📃",
+    PY: "🐍",
+    IPYNB: "📓",
+    JSON: "📑",
+    DEFAULT: "📎",
   };
 
   return (
@@ -208,6 +264,53 @@ export default async function PythonPage() {
           Open Live Python Editor →
         </Link>
       </section>
+
+      {/* Downloadable Files Section */}
+      {downloadFiles.length > 0 && (
+        <section className="mt-16 p-8 bg-gradient-to-r from-violet-50 to-indigo-50 dark:from-violet-900 dark:to-indigo-900 rounded-lg border border-violet-200 dark:border-violet-700">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            📥 Downloadable Resources
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            Download Python code samples, notebooks, datasets, and other learning materials for offline use.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {downloadFiles.map((file, idx) => (
+              <a
+                key={idx}
+                href={file.url}
+                download
+                className="group block p-4 bg-white dark:bg-gray-800 border border-violet-200 dark:border-violet-700 rounded-lg hover:shadow-md hover:border-violet-400 dark:hover:border-violet-500 transition-all"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="text-2xl">
+                    {fileIcons[file.extension] || fileIcons["DEFAULT"]}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-gray-900 dark:text-white text-sm break-words group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                      {file.name}
+                    </h3>
+                    <div className="flex items-center justify-between mt-2 text-xs text-gray-500 dark:text-gray-400">
+                      <span className="bg-violet-100 dark:bg-violet-900 text-violet-700 dark:text-violet-300 px-2 py-1 rounded">
+                        {file.extension}
+                      </span>
+                      <span>{file.size}</span>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 text-violet-600 dark:text-violet-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                    ↓
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <p className="mt-6 text-sm text-gray-600 dark:text-gray-400">
+            💡 <strong>Tip:</strong> Files are updated regularly. Check back often for new resources and improvements!
+          </p>
+        </section>
+      )}
     </main>
   );
 }

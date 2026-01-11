@@ -1,0 +1,45 @@
+Python Built-in Functions Reference
+
+Type Conversion:
+- int(x) - Convert to integer
+- str(x) - Convert to string
+- float(x) - Convert to float
+- list(x) - Convert to list
+- tuple(x) - Convert to tuple
+- set(x) - Convert to set
+- dict(x) - Convert to dictionary
+- bool(x) - Convert to boolean
+
+Useful Functions:
+- len(x) - Length of object
+- max(x) - Maximum value
+- min(x) - Minimum value
+- sum(x) - Sum of values
+- sorted(x) - Return sorted list
+- reversed(x) - Return reversed iterator
+- enumerate(x) - Get index and value
+
+Iteration:
+- range(start, stop, step) - Create sequence
+- map(func, iterable) - Apply function
+- filter(func, iterable) - Filter items
+- zip(iterable1, iterable2) - Combine iterables
+- list comprehension: [x for x in range(10)]
+
+String Methods:
+- upper() - Convert to uppercase
+- lower() - Convert to lowercase
+- strip() - Remove whitespace
+- split() - Split string
+- replace() - Replace substring
+- join() - Join list to string
+
+List Methods:
+- append(x) - Add item
+- extend(list) - Add multiple items
+- insert(index, x) - Insert at position
+- remove(x) - Remove item
+- pop(index) - Remove and return item
+- clear() - Remove all items
+- count(x) - Count occurrences
+- sort() - Sort in place

@@ -1,0 +1,30 @@
+Python Data Structures Quick Reference
+
+LIST - Ordered, mutable collection
+- Create: my_list = [1, 2, 3]
+- Append: my_list.append(4)
+- Remove: my_list.remove(2)
+- Length: len(my_list)
+
+TUPLE - Ordered, immutable collection
+- Create: my_tuple = (1, 2, 3)
+- Access: my_tuple[0] returns 1
+- Cannot be modified after creation
+
+DICTIONARY - Key-value pairs
+- Create: my_dict = {'name': 'Alice', 'age': 30}
+- Access: my_dict['name'] returns 'Alice'
+- Keys: my_dict.keys()
+- Values: my_dict.values()
+
+SET - Unordered, unique collection
+- Create: my_set = {1, 2, 3}
+- Add: my_set.add(4)
+- Remove: my_set.remove(2)
+- Unique items only
+
+OPERATIONS ON COLLECTIONS
+- Iteration: for item in collection
+- Membership: item in collection
+- Slicing: list[start:end]
+- Sorting: sorted(list), list.sort()
