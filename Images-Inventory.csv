@@ -1,0 +1,25 @@
+Platform,Category,Image Filename,Image Path,Size (KB),Theme Color,Usage
+Python,Fundamentals,python-basics.png,/img/python-basics.png,14.6,Violet (#8B5CF6),Intro to Python lesson
+Python,Fundamentals,python-control-flow.png,/img/python-control-flow.png,13.2,Violet (#8B5CF6),Control Flow lesson
+Python,Data Structures,python-collections.png,/img/python-collections.png,13.5,Violet (#8B5CF6),Lists & Tuples lesson
+Python,Data Structures,python-dict-sets.png,/img/python-dict-sets.png,14.0,Violet (#8B5CF6),Dictionaries & Sets lesson
+Python,Functions,python-functions.png,/img/python-functions.png,12.4,Violet (#8B5CF6),Functions Basics lesson
+Python,OOP,python-oop.png,/img/python-oop.png,11.6,Violet (#8B5CF6),Classes & Objects lesson
+Python,Libraries,python-numpy.png,/img/python-numpy.png,11.1,Violet (#8B5CF6),NumPy Basics lesson
+Python,Libraries,python-pandas.png,/img/python-pandas.png,13.3,Violet (#8B5CF6),Pandas DataFrames lesson
+Python,APIs,python-requests.png,/img/python-requests.png,15.3,Violet (#8B5CF6),Requests Library lesson
+SQL,Fundamentals,sql-basics.png,/img/sql-basics.png,14.8,Blue (#2563EB),Intro to SQL lesson
+SQL,Fundamentals,sql-functions.png,/img/sql-functions.png,14.6,Blue (#2563EB),Aggregate Functions lesson
+SQL,JOINs & Subqueries,sql-joins.png,/img/sql-joins.png,13.2,Blue (#2563EB),JOIN Operations lesson
+SQL,JOINs & Subqueries,sql-subqueries.png,/img/sql-subqueries.png,15.3,Blue (#2563EB),Subqueries lesson
+SQL,Database Design,sql-design.png,/img/sql-design.png,13.4,Blue (#2563EB),Schema Design lesson
+SQL,Advanced Queries,sql-advanced.png,/img/sql-advanced.png,14.1,Blue (#2563EB),Window Functions lesson
+Excel,Fundamentals,excel-basics.png,/img/excel-basics.png,14.3,Green (#22C55E),Excel Basics lesson
+Excel,Formulas & Functions,excel-formulas.png,/img/excel-formulas.png,13.2,Green (#22C55E),Essential Functions lesson
+Excel,Data Analysis,excel-analysis.png,/img/excel-analysis.png,13.6,Green (#22C55E),Data Tools lesson
+Excel,Visualization,excel-charts.png,/img/excel-charts.png,12.6,Green (#22C55E),Charts & Dashboards lesson
+Power BI,Fundamentals,powerbi-basics.png,/img/powerbi-basics.png,12.5,Amber (#D97706),Power BI Intro lesson
+Power BI,Data Modeling,powerbi-modeling.png,/img/powerbi-modeling.png,13.3,Amber (#D97706),Data Relationships lesson
+Power BI,DAX Formulas,powerbi-dax.png,/img/powerbi-dax.png,11.3,Amber (#D97706),DAX Measures lesson
+Power BI,Dashboards & Reports,powerbi-dashboards.png,/img/powerbi-dashboards.png,15.9,Amber (#D97706),Dashboard Design lesson
+Main,Data Scientist Hub,data-scientist.png,/img/data-scientist.png,N/A,Indigo (#6366F1),Main hub header
