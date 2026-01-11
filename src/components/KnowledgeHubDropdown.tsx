@@ -4,9 +4,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const KNOWLEDGE_SECTIONS = [
-  // keep your current first section as needed, e.g., Smart Money (if you have it)
   {
-    title: "Smart Money, Modern Lifestyle",
+    title: "Smart Money & Modern Lifestyle",
     base: "/knowledge_hub/smart-money-modern-lifestyle",
     subs: [
       { slug: "budgeting-money-hacks", title: "Budgeting & Money Hacks" },
@@ -16,8 +15,6 @@ const KNOWLEDGE_SECTIONS = [
       { slug: "remote-work-geo-arbitrage", title: "Remote Work & Geo-Arbitrage" },
     ],
   },
-
-  // <-- NEW section inserted second
   {
     title: "Government Benefits & Public Schemes",
     base: "/knowledge_hub/government-benefits-public-schemes",
@@ -30,7 +27,7 @@ const KNOWLEDGE_SECTIONS = [
     ],
   },
 
-  // remainder of your sections (example)
+  // existing items (keep in same order)
   {
     title: "Strategic Business Solutions",
     base: "/knowledge_hub/strategic-business-solutions",
@@ -57,7 +54,7 @@ const KNOWLEDGE_SECTIONS = [
     title: "Career Growth Grid",
     base: "/knowledge_hub/career-growth-grid",
     subs: [
-      { slug: "fp-a", title: "FP&A" },
+      { slug: "fp&a", title: "FP&A" },
       { slug: "data-scientist", title: "Data Scientist" },
       { slug: "career-growth", title: "Career Growth" },
       { slug: "human-skills", title: "Human Skills" },
@@ -79,17 +76,13 @@ const KNOWLEDGE_SECTIONS = [
 
 export default function KnowledgeHubDropdown(): JSX.Element {
   const router = useRouter();
-
-  function navigate(href: string) {
-    router.push(href);
-  }
+  const navigate = (href: string) => router.push(href);
 
   return (
     <div className="w-96 bg-white rounded shadow-md p-4" style={{ zIndex: 9999, pointerEvents: "auto" }} role="menu">
       {KNOWLEDGE_SECTIONS.map((section) => (
         <div key={section.title} className="mb-4">
           <h4 className="font-semibold text-sm">{section.title}</h4>
-
           <div className="mt-2 flex flex-wrap items-center text-sm text-gray-700">
             {section.subs.map((sub, idx) => {
               const href = `${section.base}/${sub.slug}`;
@@ -98,30 +91,19 @@ export default function KnowledgeHubDropdown(): JSX.Element {
                   <button
                     type="button"
                     onMouseDown={() => navigate(href)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") navigate(href);
-                    }}
                     className="bg-transparent border-0 p-0 m-0 text-left text-gray-700 hover:underline cursor-pointer text-sm"
                     aria-label={sub.title}
                     style={{ lineHeight: 1 }}
                   >
                     {sub.title}
                   </button>
-                  <span style={{ display: "none" }}>
-                    <Link href={href}>{sub.title}</Link>
-                  </span>
-                  {idx < section.subs.length - 1 && (
-                    <span className="mx-2 text-gray-400" aria-hidden>
-                      •
-                    </span>
-                  )}
+                  {idx < section.subs.length - 1 && <span className="mx-2 text-gray-400">•</span>}
                 </span>
               );
             })}
           </div>
         </div>
       ))}
-
       <div className="pt-2 border-t mt-2">
         <Link href="/knowledge_hub" className="text-sm text-indigo-600 hover:underline">
           View all Knowledge Hub content →
