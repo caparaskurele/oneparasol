@@ -43,6 +43,7 @@ export function Navbar(): JSX.Element {
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <Link href="/" className="text-gray-800 dark:text-gray-200 hover:underline">Home</Link>
             <Link href="/about" className="text-gray-800 dark:text-gray-200 hover:underline">About</Link>
+            <Link href="/python" className="text-gray-800 dark:text-gray-200 hover:underline">Python</Link>
 
             {/* Knowledge Hub with hover dropdown */}
             <div className="relative group">
