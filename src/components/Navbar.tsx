@@ -4,8 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useSession } from "next-auth/react";
 
 export function Navbar(): JSX.Element {
+  const { data: session } = useSession();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const hubMenu = [
     {
       title: "Strategic Business Solutions",
@@ -44,6 +52,7 @@ export function Navbar(): JSX.Element {
             <Link href="/" className="text-gray-800 dark:text-gray-200 hover:underline">Home</Link>
             <Link href="/about" className="text-gray-800 dark:text-gray-200 hover:underline">About</Link>
             <Link href="/python" className="text-gray-800 dark:text-gray-200 hover:underline">Python</Link>
+            <Link href="/share-learning" className="text-gray-800 dark:text-gray-200 hover:underline">Share Learning</Link>
 
             {/* Knowledge Hub with hover dropdown */}
             <div className="relative group">
@@ -67,8 +76,25 @@ export function Navbar(): JSX.Element {
               </div>
             </div>
 
-            <Link href="/blogs" className="text-gray-800 dark:text-gray-200 hover:underline">Blogs</Link>
             <Link href="/offerings" className="text-gray-800 dark:text-gray-200 hover:underline">Offerings</Link>
+
+            {/* Auth Links */}
+            {mounted && (
+              <>
+                {session?.user ? (
+                  <Link href="/my-profile" className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
+                    My Profile
+                  </Link>
+                ) : (
+                  <>
+                    <Link href="/signin" className="text-gray-800 dark:text-gray-200 hover:underline">Sign In</Link>
+                    <Link href="/signup" className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition">
+                      Sign Up
+                    </Link>
+                  </>
+                )}
+              </>
+            )}
           </nav>
 
           {/* Theme toggle */}

@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @default(cuid())
+  name          String
+  email         String          @unique
+  password      String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  
+  // Relations
+  learnings     Learning[]
+  
+  // Points and rewards
+  totalPoints   Int             @default(0)
+  
+  @@map("users")
+}
+
+model Learning {
+  id            String          @id @default(cuid())
+  userId        String
+  topic         String          // "Python", "SQL", "Excel", "Power BI", "General Learning"
+  title         String
+  content       String
+  code          String?
+  files         String          @default("[]") // JSON array of filenames
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  
+  // Relations
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([topic])
+  @@map("learnings")
+}
