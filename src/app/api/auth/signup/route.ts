@@ -12,6 +12,12 @@ function sanitizeInput(input: string): string {
 
 export async function POST(request: NextRequest) {
   try {
+    // Log environment info
+    console.log("=== SIGNUP API CALLED ===");
+    console.log("NODE_ENV:", process.env.NODE_ENV);
+    console.log("DATABASE_URL exists:", !!process.env.DATABASE_URL);
+    console.log("DATABASE_URL:", process.env.DATABASE_URL?.substring(0, 30) + "...");
+    
     // Parse request body
     const body = await request.json();
     const { name, email, password } = body;
