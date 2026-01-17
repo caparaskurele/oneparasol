@@ -61,8 +61,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user already exists
+    let existingUser;
     try {
-      const existingUser = await prisma.user.findUnique({
+      existingUser = await prisma.user.findUnique({
         where: { email: sanitizedEmail },
       });
 
@@ -72,10 +73,15 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         );
       }
-    } catch (dbError) {
+    } catch (dbError: any) {
       console.error("Database lookup error:", dbError);
+      console.error("Error details:", {
+        message: dbError?.message,
+        code: dbError?.code,
+        meta: dbError?.meta,
+      });
       return NextResponse.json(
-        { error: "Database error. Please try again later." },
+        { error: "Database connection error. Please try again later." },
         { status: 500 }
       );
     }
@@ -116,10 +122,15 @@ export async function POST(request: NextRequest) {
         },
         { status: 201 }
       );
-    } catch (createError) {
+    } catch (createError: any) {
       console.error("User creation error:", createError);
+      console.error("Error details:", {
+        message: createError?.message,
+        code: createError?.code,
+        meta: createError?.meta,
+      });
       // Check if error is due to unique constraint
-      if (createError instanceof Error && createError.message.includes("Unique constraint")) {
+      if (createError?.code === "P2002") {
         return NextResponse.json(
           { error: "Email already registered. Please sign in." },
           { status: 400 }
@@ -130,7 +141,7 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Signup error:", error);
     return NextResponse.json(
       { error: "An unexpected error occurred. Please try again." },

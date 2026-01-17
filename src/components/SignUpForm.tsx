@@ -128,9 +128,9 @@ export default function SignUpForm() {
       setTimeout(() => {
         router.push('/signin?registered=true');
       }, 1000);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Sign up error:', err);
-      setError('An error occurred while creating your account. Please try again.');
+      setError('Network error. Please check your connection and try again.');
       setLoading(false);
     }
   };
