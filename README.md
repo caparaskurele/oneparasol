@@ -1,32 +1,28 @@
 <p align="center">
- <a href="https://web3templates.com/?ref=nextly_github_logo">
- <img src="https://user-images.githubusercontent.com/1884712/132941531-0fdd7acf-47ca-424e-b77f-1fab2e372a37.png" alt="W3T" width="100" height="41"/>
- </a> 
- <br>
- <br>
+ <h1>OneParasol - Knowledge Platform</h1>
 </p>
 
-# Nextly - Landing Page Template with Next.js & Tailwind CSS
+# OneParasol - Knowledge Platform
 
-Nextly is a free landing page & marketing website template for  startups and indie projects. Its built with Next.js & TailwindCSS.
+OneParasol is a comprehensive knowledge platform offering content on finance, investment, career growth, and lifestyle. Built with Next.js & TailwindCSS.
 And its completely open-source.
  
 ![image](https://user-images.githubusercontent.com/1884712/121497169-03228680-c990-11eb-975a-e77fddc43de0.png)
 
 ## How to use
 
-Click on the [Use Template](https://github.com/surjithctly/nextly-template/generate) button on this page to clone this respository to your github account. Or you can also clone this respository using terminal or bash. 
+Clone this repository to your machine using terminal or bash.
 
 ### 1\. Clone this Repository
 
 ```bash
-git clone https://github.com/surjithctly/nextly-template.git
+git clone https://github.com/oneparasol/oneparasol.git
 ```
 
 ### 2\. Navigate to the directory
 
 ```
-cd nextly-template
+cd oneparasol
 ```
 
 ### 3\. Install dependencies
@@ -49,7 +45,7 @@ npm run dev
 
 Deploy this template using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/surjithctly/nextly-template&project-name=nextly-template&repository-name=nextly-template)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/oneparasol/oneparasol&project-name=oneparasol&repository-name=oneparasol)
 
 
 ## Author

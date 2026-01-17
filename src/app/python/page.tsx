@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { Container } from '@/components/Container';
 import PythonNotesDisplay from '@/components/PythonNotesDisplay';
 
@@ -22,20 +23,42 @@ export default function PythonPage() {
           </p>
         </div>
 
-        {/* Info Box */}
-        <div className="bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-200 dark:border-indigo-800 rounded-lg p-6 mb-12">
-          <h3 className="font-semibold text-indigo-900 dark:text-indigo-100 mb-3">
-            ✨ How It Works:
-          </h3>
-          <ul className="text-indigo-800 dark:text-indigo-200 space-y-2 text-sm">
-            <li>✓ Share your learning notes and observations</li>
-            <li>✓ Add Python code with explanations</li>
-            <li>✓ Upload screenshots, images, and videos</li>
-            <li>✓ Edit or update your notes anytime</li>
-            <li>✓ All posts include date and time stamps</li>
-            <li>✓ Latest posts appear at the top for easy discovery</li>
-            <li>✓ View and learn from your classmates&apos; contributions</li>
-          </ul>
+        {/* Quick Links */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {/* Projects Card */}
+          <Link href="/python/projects" className="group">
+            <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 rounded-lg p-8 text-white shadow-lg hover:shadow-xl transition-all h-full">
+              <div className="flex items-start justify-between mb-4">
+                <span className="text-4xl">📚</span>
+                <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">
+                  New
+                </span>
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Python Projects</h3>
+              <p className="text-indigo-100 mb-4">
+                Learn through real-world projects with detailed explanations and practice sections
+              </p>
+              <div className="inline-flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all">
+                Explore Projects
+                <span className="text-xl">→</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Info Card */}
+          <div className="bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-200 dark:border-indigo-800 rounded-lg p-8">
+            <h3 className="font-semibold text-indigo-900 dark:text-indigo-100 mb-3 text-lg">
+              ✨ How It Works:
+            </h3>
+            <ul className="text-indigo-800 dark:text-indigo-200 space-y-2 text-sm">
+              <li>✓ Share your learning notes and observations</li>
+              <li>✓ Add Python code with explanations</li>
+              <li>✓ Upload screenshots, images, and videos</li>
+              <li>✓ Edit or update your notes anytime</li>
+              <li>✓ All posts include date and time stamps</li>
+              <li>✓ Latest posts appear at the top for easy discovery</li>
+            </ul>
+          </div>
         </div>
 
         {/* Main Content */}

@@ -51,7 +51,24 @@ export function Navbar(): JSX.Element {
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <Link href="/" className="text-gray-800 dark:text-gray-200 hover:underline">Home</Link>
             <Link href="/about" className="text-gray-800 dark:text-gray-200 hover:underline">About</Link>
-            <Link href="/python" className="text-gray-800 dark:text-gray-200 hover:underline">Python</Link>
+            
+            {/* Python Dropdown */}
+            <div className="relative group">
+              <button className="text-gray-800 dark:text-gray-200 hover:underline flex items-center gap-1">
+                Python
+              </button>
+              <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity">
+                <div className="p-2">
+                  <Link href="/python" className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-900 rounded">
+                    Python Hub
+                  </Link>
+                  <Link href="/python/projects" className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-900 rounded font-semibold">
+                    Projects
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
             <Link href="/share-learning" className="text-gray-800 dark:text-gray-200 hover:underline">Share Learning</Link>
 
             {/* Knowledge Hub with hover dropdown */}

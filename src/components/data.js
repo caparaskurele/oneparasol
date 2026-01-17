@@ -40,17 +40,17 @@ const benefitTwo = {
   bullets: [
     {
       title: "Mobile Responsive Template",
-      desc: "Nextly is designed as a mobile first responsive template.",
+      desc: "OneParasol is designed as a mobile first responsive template.",
       icon: <DevicePhoneMobileIcon />,
     },
     {
       title: "Powered by Next.js & TailwindCSS",
-      desc: "This template is powered by latest technologies and tools.",
+      desc: "This platform is powered by latest technologies and tools.",
       icon: <AdjustmentsHorizontalIcon />,
     },
     {
       title: "Dark & Light Mode",
-      desc: "Nextly comes with a zero-config light & dark mode. ",
+      desc: "OneParasol comes with a zero-config light & dark mode. ",
       icon: <SunIcon />,
     },
   ],
