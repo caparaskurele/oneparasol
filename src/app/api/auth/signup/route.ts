@@ -128,6 +128,7 @@ export async function POST(request: NextRequest) {
           name: sanitizedName,
           email: sanitizedEmail,
           password: hashedPassword,
+          emailVerified: false, // User needs to verify email
           totalPoints: 0,
         },
         select: {
@@ -138,10 +139,27 @@ export async function POST(request: NextRequest) {
         },
       });
 
+      // Send OTP email for verification
+      try {
+        await fetch(new URL("/api/auth/send-otp", request.nextUrl.origin), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: sanitizedEmail,
+            userId: user.id,
+            type: "email-verification",
+          }),
+        });
+      } catch (emailError) {
+        console.error("Failed to send OTP email:", emailError);
+        // Don't fail signup if OTP send fails - user can still be created
+      }
+
       return NextResponse.json(
         {
-          message: "Account created successfully! Please sign in.",
+          message: "Account created! Check your email for verification OTP.",
           user,
+          requiresEmailVerification: true,
         },
         { status: 201 }
       );

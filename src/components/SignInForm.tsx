@@ -167,13 +167,19 @@ export default function SignInForm() {
         {loading ? 'Signing in...' : 'Sign In'}
       </button>
 
-      {/* Link to Sign Up */}
-      <p className="text-center text-slate-600 dark:text-slate-400 text-sm">
-        Don&apos;t have an account?{' '}
-        <Link href="/signup" className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
-          Sign up
+      {/* Links to Sign Up and Forgot Password */}
+      <div className="flex justify-between items-center text-sm mt-4">
+        <p className="text-slate-600 dark:text-slate-400">
+          Don&apos;t have an account?{' '}
+          <Link href="/signup" className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
+            Sign up
+          </Link>
+        </p>
+        <Link href="/forgot-password" className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
+          Forgot password?
         </Link>
-      </p>
+      </div>
     </form>
   );
 }
+

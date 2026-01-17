@@ -29,6 +29,8 @@ const validationRules = {
 export default function SignUpForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  
+  // Form states
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,6 +39,13 @@ export default function SignUpForm() {
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  
+  // OTP verification states
+  const [showOTPVerification, setShowOTPVerification] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [otpError, setOtpError] = useState('');
+  const [userId, setUserId] = useState('');
+  const [verifyingOTP, setVerifyingOTP] = useState(false);
 
   // Check for success message from signin redirect
   useEffect(() => {
@@ -123,17 +132,132 @@ export default function SignUpForm() {
         return;
       }
 
-      // Redirect to signin with success message
-      setSuccess('Account created successfully! Redirecting to sign in...');
-      setTimeout(() => {
-        router.push('/signin?registered=true');
-      }, 1000);
+      // Show OTP verification form
+      setUserId(data.user.id);
+      setShowOTPVerification(true);
+      setSuccess('OTP sent to your email! Enter it below to verify.');
+      
+      // Reset form
+      setName('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
     } catch (err: any) {
       console.error('Sign up error:', err);
       setError('Network error. Please check your connection and try again.');
+    } finally {
       setLoading(false);
     }
   };
+
+  const handleVerifyOTP = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setOtpError('');
+
+    if (!otp || otp.length !== 6) {
+      setOtpError('Please enter a valid 6-digit OTP');
+      return;
+    }
+
+    setVerifyingOTP(true);
+
+    try {
+      const response = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId,
+          code: otp,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setOtpError(data.error || 'Invalid OTP');
+        return;
+      }
+
+      setSuccess('Email verified successfully! Redirecting to sign in...');
+      setShowOTPVerification(false);
+      
+      // Redirect to signin after 2 seconds
+      setTimeout(() => {
+        router.push('/signin?registered=true');
+      }, 2000);
+    } catch (err: any) {
+      console.error('OTP verification error:', err);
+      setOtpError('An error occurred. Please try again.');
+    } finally {
+      setVerifyingOTP(false);
+    }
+  };
+
+  if (showOTPVerification) {
+    return (
+      <div className="w-full max-w-md mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Verify Your Email</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
+          We sent a 6-digit OTP to your email. Enter it below to verify your account.
+        </p>
+
+        <form onSubmit={handleVerifyOTP}>
+          <div className="mb-4">
+            <label htmlFor="otp" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              OTP Code
+            </label>
+            <input
+              type="text"
+              id="otp"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+              placeholder="000000"
+              maxLength={6}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-center text-2xl tracking-widest
+                dark:bg-gray-700 dark:border-gray-600 dark:text-white
+                focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              disabled={verifyingOTP}
+            />
+            {otpError && (
+              <p className="text-red-600 dark:text-red-400 text-sm mt-1">{otpError}</p>
+            )}
+          </div>
+
+          {error && (
+            <div className="mb-4 p-3 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-200 rounded">
+              {error}
+            </div>
+          )}
+
+          {success && (
+            <div className="mb-4 p-3 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-200 rounded">
+              {success}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={verifyingOTP}
+            className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400
+              text-white font-bold py-2 px-4 rounded-lg transition-colors"
+          >
+            {verifyingOTP ? 'Verifying...' : 'Verify Email'}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setShowOTPVerification(false)}
+            className="w-full mt-2 bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500
+              text-gray-900 dark:text-white font-bold py-2 px-4 rounded-lg transition-colors"
+          >
+            Back
+          </button>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
