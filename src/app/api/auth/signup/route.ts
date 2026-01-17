@@ -79,11 +79,28 @@ export async function POST(request: NextRequest) {
         message: dbError?.message,
         code: dbError?.code,
         meta: dbError?.meta,
+        prismaVersion: require("@prisma/client/package.json").version,
       });
-      return NextResponse.json(
-        { error: "Database connection error. Please try again later." },
-        { status: 500 }
-      );
+      
+      // Try to reconnect and retry once
+      try {
+        console.log("Attempting database reconnection...");
+        existingUser = await prisma.user.findUnique({
+          where: { email: sanitizedEmail },
+        });
+        if (existingUser) {
+          return NextResponse.json(
+            { error: "Email already registered. Please sign in instead." },
+            { status: 400 }
+          );
+        }
+      } catch (retryError: any) {
+        console.error("Database reconnection failed:", retryError);
+        return NextResponse.json(
+          { error: "Database connection error. Please try again later." },
+          { status: 500 }
+        );
+      }
     }
 
     // Hash password with salt rounds
