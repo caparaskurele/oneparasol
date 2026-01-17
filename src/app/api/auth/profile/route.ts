@@ -3,6 +3,9 @@ import { getServerSession } from "next-auth/next";
 import { prisma } from "@/lib/prisma";
 import { authOptions } from "@/lib/auth";
 
+// Mark route as dynamic since it uses session/headers
+export const dynamic = 'force-dynamic';
+
 // GET user profile (current logged-in user)
 export async function GET(request: NextRequest) {
   try {
