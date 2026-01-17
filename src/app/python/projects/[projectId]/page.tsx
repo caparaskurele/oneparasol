@@ -20,7 +20,7 @@ export default function ProjectPage({ params }: { params: { projectId: string } 
               Project Not Found
             </h1>
             <p className="text-slate-600 dark:text-slate-400 mb-6">
-              The project you're looking for doesn't exist.
+              The project you&apos;re looking for doesn&apos;t exist.
             </p>
             <Link
               href="/python/projects"
@@ -193,9 +193,9 @@ export default function ProjectPage({ params }: { params: { projectId: string } 
             </h3>
             <ul className="space-y-2 text-slate-700 dark:text-slate-300">
               <li>✓ First, carefully read through the solved project to understand the approach</li>
-              <li>✓ Pay attention to the "why" behind each decision and what alternatives were considered</li>
+              <li>✓ Pay attention to the &quot;why&quot; behind each decision and what alternatives were considered</li>
               <li>✓ Then, switch to the practice section and try to replicate the steps yourself</li>
-              <li>✓ Don't copy-paste; type the code to build muscle memory</li>
+              <li>✓ Don&apos;t copy-paste; type the code to build muscle memory</li>
               <li>✓ Experiment with the code - change parameters and see what happens</li>
               <li>✓ Take notes of your learnings and insights</li>
             </ul>

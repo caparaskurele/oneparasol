@@ -173,7 +173,7 @@ export default function PracticeNotebook({ projectId }: PracticeNotebookProps) {
       {/* Info */}
       <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-600 dark:text-slate-400">
         <p className="mb-2">
-          <strong>Note:</strong> To execute Python code, you'll need to set up a backend service. Currently, this is a placeholder.
+          <strong>Note:</strong> To execute Python code, you&apos;ll need to set up a backend service. Currently, this is a placeholder.
         </p>
         <p className="text-xs">
           Options: Pyodide (browser-based), Thebe (JupyterHub), or a custom FastAPI backend with a Python execution service.
